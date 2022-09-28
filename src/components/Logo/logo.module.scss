@@ -1,0 +1,24 @@
+@use "../../abstract" as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+
+  .image {
+    background-color: themeColor($theme, fg);
+    border-radius: 4em;
+
+    img {
+      $width: 22em;
+
+      width: $width;
+      height: cal-height($width, 1, 1);
+    }
+  }
+
+  .name {
+    font-size: 2em;
+  }
+}

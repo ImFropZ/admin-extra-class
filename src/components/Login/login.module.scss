@@ -1,0 +1,66 @@
+@use "../../abstract" as *;
+
+.container {
+  $width: 55em;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: themeColor($theme, fg);
+  width: $width;
+  height: cal-height($width, 1, 1);
+  border-radius: 5em;
+  gap: 2em;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
+
+  .title {
+    font-size: 6em;
+  }
+
+  .username,
+  .password {
+    $width: 25em;
+
+    padding: 0.5em 1em;
+    width: $width;
+    height: cal-height($width, 8, 1);
+    border: none;
+    border-radius: 2em;
+    box-shadow: inset -2px 4px 4px rgba(0, 0, 0, 0.25),
+      inset 2px -4px 4px rgba(0, 0, 0, 0.25);
+
+    &:focus {
+      outline: none;
+      border: none;
+    }
+  }
+
+  .btn {
+    border: 0;
+    background-color: $clr-white;
+    padding: 0.5em 2.3em;
+    cursor: pointer;
+    border-radius: 2em;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+    font-size: 1.7em;
+  }
+
+  .linkContainer {
+    display: flex;
+    gap: 5em;
+    font-size: 1.5em;
+
+    a {
+      color: $clr-black;
+
+      &:active {
+        color: $clr-black;
+      }
+
+      &:visited {
+        color: $clr-black;
+      }
+    }
+  }
+}

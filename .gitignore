@@ -17,6 +17,8 @@
 .env.development.local
 .env.test.local
 .env.production.local
+*.css.map
+*.css
 
 npm-debug.log*
 yarn-debug.log*

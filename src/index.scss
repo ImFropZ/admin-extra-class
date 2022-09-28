@@ -1,4 +1,6 @@
+@use "./abstract" as *;
 @import url("./abstract/_fonts.scss");
+
 *,
 *::after,
 *::before {
@@ -10,10 +12,10 @@
 html,
 body {
   background-color: #ffffff;
-  font-size: 0.625rem;
-  font-family: "Inter", "Kantumruy", sans-serif;
+  font-size: $root-font-size;
+  font-family: $font-family;
 }
 
 #root {
   font-size: 1.6em;
-}/*# sourceMappingURL=index.css.map */
+}

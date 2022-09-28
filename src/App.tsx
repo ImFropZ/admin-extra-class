@@ -1,25 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, Navigate } from "react-router-dom";
+import { PrivateRoute, Header } from "./components";
+import {
+  Classroom,
+  Course,
+  Dashboard,
+  Login,
+  Student,
+  Teacher,
+  User,
+  Create,
+} from "./pages";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route element={<PrivateRoute />}>
+        {/* Authenticate Route  */}
+        <Route element={<Header />}>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/teacher" element={<Teacher />} />
+          <Route path="/course" element={<Course />} />
+          <Route path="/student" element={<Student />} />
+          <Route path="/classroom" element={<Classroom />} />
+          <Route path="/user" element={<User />} />
+        </Route>
+
+        {/* Create Route */}
+        <Route path="/create/user" element={<Create />} />
+        <Route path="/create/course" element={<Create />} />
+        <Route path="/create/student" element={<Create />} />
+      </Route>
+      <Route path="*" element={<Navigate to="/" />} />
+    </Routes>
   );
 }
 

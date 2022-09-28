@@ -1,0 +1,32 @@
+$clr-black: #000;
+$clr-white: #fff;
+
+$clr-red: #f00;
+$clr-green: #0f0;
+$clr-blue: #00f;
+$clr-yellow: #ff0;
+$clr-purple: #f0f;
+$clr-cyan: #0ff;
+
+$cold-day: (
+  fg: #a5c9ca,
+  bg: #e7f6f2,
+  primary: #2c3333,
+  secondary: #395b64,
+);
+
+$vintage-blue: (
+  fg: #03506f,
+  bg: #2c3333,
+  primary: #ffe3d8,
+  secondary: #bbbbbb,
+);
+
+$extra-class: (
+  fg: #d9d9d9,
+  bg: $clr-white,
+  primary: $clr-black,
+  secondary: #413f3f,
+);
+
+$theme: $extra-class;
