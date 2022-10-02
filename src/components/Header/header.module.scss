@@ -1,7 +1,10 @@
 @use "../../abstract" as *;
 
 .container {
-  margin: 0.3em;
+  position: relative;
+  margin: 0 .5em;
+  z-index: 10;
+  top: 0.3em;
   padding: 0.5em;
   display: flex;
   font-size: 1.8em;
@@ -61,19 +64,25 @@
       background-color: $clr-red;
       cursor: pointer;
 
-      &_props {
-        cursor: pointer;
-        border-radius: 11px;
-        padding: 0.3em 0;
-        font-size: .9em;
+      &_content {
         position: absolute;
-        top: 105%;
-        left: 0;
+        overflow: hidden;
+        padding: 0.7em 1.3em;
+        cursor: pointer;
+        border-radius: 8px;
+        font-size: 0.9em;
+        top: 100%;
         right: 0;
         display: flex;
         flex-direction: column;
         color: themeColor($theme, bg);
         background: themeColor($theme, secondary);
+        box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
+        transition: all 0.3s ease;
+
+        div {
+          color: themeColor($theme, bg);
+        }
       }
     }
   }

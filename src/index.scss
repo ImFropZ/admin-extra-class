@@ -14,8 +14,27 @@ body {
   background-color: #ffffff;
   font-size: $root-font-size;
   font-family: $font-family;
+  height: 100vh;
+  overflow-x: hidden;
 }
+
+@include noSelect;
 
 #root {
   font-size: 1.6em;
+  position: relative;
+  height: 100%;
+}
+
+a {
+  color: themeColor($theme, primary);
+  text-decoration: none;
+
+  &:visited {
+    color: themeColor($theme, primary);
+  }
+
+  &:active {
+    color: themeColor($theme, primary);
+  }
 }

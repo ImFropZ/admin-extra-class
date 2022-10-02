@@ -12,8 +12,32 @@ body {
   background-color: #ffffff;
   font-size: 0.625rem;
   font-family: "Inter", "Kantumruy", sans-serif;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.no-select {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */ /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+           supported by Chrome, Edge, Opera and Firefox */
 }
 
 #root {
   font-size: 1.6em;
+  position: relative;
+  height: 100%;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+a:visited {
+  color: black;
+}
+a:active {
+  color: black;
 }/*# sourceMappingURL=index.css.map */

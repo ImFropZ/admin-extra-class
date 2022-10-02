@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { PrivateRoute, Header } from "./components";
+import { PrivateRoute, UnauthorizedRoute, Header } from "./components";
 import {
   Classroom,
   Course,
@@ -14,7 +14,9 @@ import {
 function App() {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
+      <Route element={<UnauthorizedRoute />}>
+        <Route path="/login" element={<Login />} />
+      </Route>
       <Route element={<PrivateRoute />}>
         {/* Authenticate Route  */}
         <Route element={<Header />}>

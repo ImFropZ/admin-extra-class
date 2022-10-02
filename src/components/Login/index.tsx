@@ -1,5 +1,5 @@
 import classes from "./login.module.css";
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
@@ -13,7 +13,8 @@ function Login() {
     password: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/g,
   };
 
-  const loginHandler = () => {
+  const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     const username = usernameRef.current?.value || "";
     const password = passwordRef.current?.value || "";
     if (!username.match(regEx.username) || !password.match(regEx.password))
@@ -28,22 +29,22 @@ function Login() {
   return (
     <div className={classes.container}>
       <h1 className={classes.title}>Login</h1>
-      <input
-        type="text"
-        className={classes.username}
-        placeholder="Username"
-        autoComplete="off"
-        ref={usernameRef}
-      />
-      <input
-        type="password"
-        className={classes.password}
-        placeholder="Password"
-        ref={passwordRef}
-      />
-      <button className={classes.btn} onClick={loginHandler}>
-        Login
-      </button>
+      <form onSubmit={submitHandler}>
+        <input
+          type="text"
+          className={classes.username}
+          placeholder="Username"
+          autoComplete="off"
+          ref={usernameRef}
+        />
+        <input
+          type="password"
+          className={classes.password}
+          placeholder="Password"
+          ref={passwordRef}
+        />
+        <input type="submit" value="Login" className={classes.btn} />
+      </form>
       <div className={classes.linkContainer}>
         <a href="#" className={classes.link}>
           Create Account?

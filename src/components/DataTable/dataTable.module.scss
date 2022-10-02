@@ -1,0 +1,58 @@
+@use "../../abstract" as *;
+
+.table {
+  position: relative;
+  width: 95%;
+  height: 78%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  font-size: 1.5em;
+  border-radius: 20px;
+
+  thead {
+    tr {
+      th {
+        text-align: center;
+        
+        &:first-child {
+          border-top-left-radius: 20px;
+        }
+
+        &:last-child {
+          border-top-right-radius: 20px;
+        }
+
+        background: themeColor($theme, fg);
+      }
+    }
+  }
+
+  tbody {
+    height: 90%;
+    tr {
+      height: 10%;
+
+      td {
+        text-align: center;
+      }
+
+      &:nth-child(even) {
+        td {
+          background: themeColor($theme, fg);
+        }
+      }
+
+      &:last-child {
+        td {
+          &:first-child {
+            border-bottom-left-radius: 20px;
+          }
+
+          &:last-child {
+            border-bottom-right-radius: 20px;
+          }
+        }
+      }
+    }
+  }
+}

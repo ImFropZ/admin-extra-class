@@ -1,8 +1,18 @@
-import React from "react";
+import { SectionHeader } from "../../components";
 import classes from "./classroom.module.css";
 
 function Classroom() {
-  return <div>index</div>;
+  return (
+    <>
+      <SectionHeader
+        title="Class Details"
+        btnName="+ Create New Class"
+        onCreate={() => {
+          console.log("Class");
+        }}
+      />
+    </>
+  );
 }
 
 export default Classroom;

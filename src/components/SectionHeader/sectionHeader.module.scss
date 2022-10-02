@@ -1,0 +1,42 @@
+@use "../../abstract" as *;
+
+.header {
+  display: flex;
+  margin: 2em;
+  align-items: center;
+  font-size: 1.3em;
+
+  .search {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+    margin-left: 2em;
+    position: relative;
+
+    svg {
+      width: 1.5em;
+      height: 1.5em;
+      position: absolute;
+      left: 0.5em;
+    }
+
+    input[type="text"] {
+      @include restartInput;
+      font-size: 1.2em;
+      padding: 0.2em 0.2em 0.2em 1.9em;
+      border-radius: 35px;
+      background: themeColor($theme, fg);
+    }
+  }
+
+  .btn {
+    @include restartButton;
+    background: themeColor($theme, fg, 0.7);
+    font-size: 1.1em;
+    padding: 0.8em;
+
+    &:hover {
+      background: themeColor($theme, fg);
+    }
+  }
+}

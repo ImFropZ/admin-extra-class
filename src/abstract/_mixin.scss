@@ -68,3 +68,35 @@
   bottom: 0;
   translate: 0 100%;
 }
+
+@mixin noSelect {
+  .no-select {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+  }
+}
+
+@mixin restartButton {
+  border: 0;
+  cursor: pointer;
+  background-color: #fff;
+
+  &:hover {
+    background-color: #fff;
+  }
+}
+
+@mixin restartInput {
+  border: 0;
+  outline: 0;
+
+  &:focus {
+    border: 0;
+    outline: 0;
+  }
+}

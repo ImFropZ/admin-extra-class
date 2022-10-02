@@ -1,0 +1,36 @@
+@use "../../abstract" as *;
+
+.container {
+  font-size: 1.8em;
+  position: absolute;
+  top: 3em;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px 10px;
+  grid-template-areas:
+    "Infomation Graph Graph"
+    "Event Data Data";
+  margin: 1em 1em;
+
+  * {
+    border-radius: 15px;
+    background: themeColor($theme, fg);
+  }
+
+  .infomation {
+    grid-area: Infomation;
+  }
+  .graph {
+    grid-area: Graph;
+  }
+  .event {
+    grid-area: Event;
+  }
+  .etc {
+    grid-area: Data;
+  }
+}

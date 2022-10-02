@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, Link, useNavigate } from "react-router-dom";
 import classes from "./header.module.css";
 import {
   UserIcon,
@@ -13,34 +13,52 @@ import {
 import { useState } from "react";
 
 function Header() {
+  const nav = useNavigate();
   const [isToggle, setToggle] = useState<Boolean>(false);
+
+  const logoutHandler = () => {
+    localStorage.removeItem("auth");
+    nav("/login");
+  };
 
   return (
     <>
       <div className={classes.container}>
         <div className={classes.dashboard}>
-          <DashboardIcon />
-          Dashboard
+          <Link to="/">
+            <DashboardIcon />
+            Dashboard
+          </Link>
         </div>
         <div className={classes.teacher}>
-          <TeacherIcon />
-          Teacher
+          <Link to="/teacher">
+            <TeacherIcon />
+            Teacher
+          </Link>
         </div>
         <div className={classes.course}>
-          <CourseIcon />
-          Course
+          <Link to="/course">
+            <CourseIcon />
+            Course
+          </Link>
         </div>
         <div className={classes.student}>
-          <StudentIcon />
-          Student
+          <Link to="/student">
+            <StudentIcon />
+            Student
+          </Link>
         </div>
         <div className={classes.class}>
-          <ClassIcon />
-          Class
+          <Link to="/classroom">
+            <ClassIcon />
+            Class
+          </Link>
         </div>
         <div className={classes.user}>
-          <UserIcon />
-          User
+          <Link to="/user">
+            <UserIcon />
+            User
+          </Link>
         </div>
         <div className={classes.container_profile}>
           <ProfileIcon />
@@ -52,11 +70,19 @@ function Header() {
             <ArrowIcon />
           </div>
           <div
-            className={classes.dropDown_props}
-            style={isToggle ? { display: "flex" } : { display: "none" }}
+            className={classes.dropDown_content}
+            style={
+              isToggle
+                ? { scale: "1 1", translate: "0 0" }
+                : { scale: "1 0", translate: "0 -50%" }
+            }
           >
-            <div>Setting</div>
-            <div>Logout</div>
+            <Link to="/setting">
+              <div className={`no-select`}>Setting</div>
+            </Link>
+            <div onClick={logoutHandler} className={`no-select`}>
+              Logout
+            </div>
           </div>
         </div>
       </div>

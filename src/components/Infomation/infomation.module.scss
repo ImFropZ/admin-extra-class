@@ -1,0 +1,57 @@
+@use "../../abstract" as *;
+
+.container {
+  position: relative;
+  grid-area: Infomation;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .title {
+    text-align: center;
+    text-decoration: underline;
+  }
+
+  .chartContainer {
+    margin-top: 2em;
+    width: 15em;
+    height: 15em;
+  }
+
+  .dataContainer {
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+
+    .student {
+      position: relative;
+      padding-left: .3em;
+
+      &::after {
+        content: "";
+        @include fully-content;
+        transform: translate(-10px, 50%);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: blue;
+      }
+    }
+
+    .teacher {
+      position: relative;
+      padding-left: .3em;
+
+      &::after {
+        content: "";
+        @include fully-content;
+        transform: translate(-10px, 50%);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: red;
+      }
+    }
+  }
+}
