@@ -3,10 +3,19 @@ import { DataTable, SectionHeader } from "../../components";
 import { teacher } from "../../DummyData";
 
 function Teacher() {
-  let row: string[][] = [];
+  const head: string[] = [
+    "ID",
+    "Name",
+    "Gender",
+    "Telephone",
+    "Email",
+    "Description",
+    "Action",
+  ];
+  const data: string[][] = [];
 
   teacher.forEach((e) => {
-    row.push([
+    data.push([
       e.id,
       e.name,
       e.gender,
@@ -27,18 +36,53 @@ function Teacher() {
         }}
       />
       <DataTable
-        head={[
-          { name: "ID" },
-          { name: "Name" },
-          { name: "Gender" },
-          { name: "Telephone" },
-          { name: "Email" },
-          { name: "Description" },
-          { name: "Action" },
-        ]}
-        data={{
-          row,
-          dataStyle: [{ name: "ID", style: { fontSize: "5em" } }],
+        head={head}
+        data={data}
+        style={{
+          head: [
+            {
+              id: "id",
+              style: { width: "5%" },
+            },
+            {
+              id: "name",
+              style: { textAlign: "left", width: "15%" },
+            },
+            {
+              id: "gender",
+              style: { width: "5%" },
+            },
+            {
+              id: "telephone",
+              style: { width: "15%", textAlign: "left", paddingLeft: "1.5em" },
+            },
+            {
+              id: "email",
+              style: { width: "25%", textAlign: "left", paddingLeft: "1.5em" },
+            },
+            {
+              id: "action",
+              style: { width: "8%" },
+            },
+          ],
+          body: [
+            {
+              id: "name",
+              style: { textAlign: "left" },
+            },
+            {
+              id: "telephone",
+              style: { textAlign: "left", paddingLeft: "1.5em" },
+            },
+            {
+              id: "email",
+              style: { textAlign: "left", paddingLeft: "1.5em" },
+            },
+            {
+              id: "description",
+              style: { paddingLeft: "1.5em", textAlign: "left" },
+            },
+          ],
         }}
       />
     </>

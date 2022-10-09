@@ -2,10 +2,11 @@ import { DataTable, SectionHeader } from "../../components";
 import { student } from "../../DummyData";
 
 function Student() {
-  let row: string[][] = [];
+  const head: string[] = ["ID", "Name", "Gender", "Email", "Action"];
+  const data: string[][] = [];
 
   student.forEach((e) => {
-    row.push([e.id, e.name, e.gender, e.email, "D/E"]);
+    data.push([e.id, e.name, e.gender, e.email, "D/E"]);
   });
 
   return (
@@ -17,16 +18,7 @@ function Student() {
           console.log("Student");
         }}
       />
-      <DataTable
-        head={[
-          { name: "ID" },
-          { name: "Name" },
-          { name: "Gender" },
-          { name: "Email" },
-          { name: "Action" },
-        ]}
-        data={{ row }}
-      />
+      <DataTable head={head} data={data} />
     </>
   );
 }

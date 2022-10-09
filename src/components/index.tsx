@@ -8,6 +8,9 @@ import Graph from "./Graph";
 import Event from "./Event";
 import SectionHeader from "./SectionHeader";
 import DataTable from "./DataTable";
+import DragAndDrop from "./DragAndDrop";
+import StudentContainer from "./StudentContainer";
+import Class from "./Class";
 
 export {
   Graph,
@@ -20,4 +23,7 @@ export {
   Header,
   SectionHeader,
   DataTable,
+  DragAndDrop,
+  StudentContainer,
+  Class,
 };

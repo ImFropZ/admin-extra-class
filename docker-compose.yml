@@ -1,0 +1,15 @@
+version: "2"
+services:
+  frontend:
+    build:
+      context: frontend
+      target: development
+    ports:
+      - 3000:3000
+    volumes:
+      - ./src:/app/src
+      - /app/node_modules
+    networks:
+      - public
+    depends_on:
+      - backend

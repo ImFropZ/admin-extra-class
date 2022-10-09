@@ -1,11 +1,11 @@
 import classes from "./login.module.css";
-import { Logo, Login as _Login } from "../../components";
+import { Logo, Login as LoginPanel } from "../../components";
 
 function Login() {
   return (
     <div className={classes.container}>
       <Logo />
-      <_Login />
+      <LoginPanel />
     </div>
   );
 }

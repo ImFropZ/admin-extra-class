@@ -2,7 +2,7 @@
 
 .container {
   position: relative;
-  margin: 0 .5em;
+  margin: 0 0.5em;
   z-index: 10;
   top: 0.3em;
   padding: 0.5em;
@@ -11,6 +11,7 @@
   gap: 2em;
   background-color: themeColor($theme, fg);
   box-shadow: 0px 2px 10px 5px rgba(0, 0, 0, 0.15);
+  margin-bottom: 1em;
 
   * {
     display: flex;

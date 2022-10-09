@@ -1,13 +1,13 @@
 import classes from "./sectionHeader.module.css";
 import { SpyglassIcon } from "../../assets/svg";
 
-interface SectionHeader {
+interface Props {
   title: string;
   btnName: string;
   onCreate(): any;
 }
 
-function SectionHeader(props: SectionHeader) {
+function SectionHeader(props: Props) {
   const { title, btnName, onCreate } = props;
 
   return (
