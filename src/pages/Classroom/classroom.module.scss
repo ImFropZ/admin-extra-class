@@ -5,12 +5,13 @@
   display: flex;
   gap: 1em;
   margin-top: 2em;
-  justify-content: space-around;
+  justify-content: flex-start;
 
   .classContainer {
     @include scrollbarHidden;
     display: flex;
     justify-content: center;
+    align-content: flex-start;
     flex-wrap: wrap;
     gap: 2em;
     overflow-y: scroll;

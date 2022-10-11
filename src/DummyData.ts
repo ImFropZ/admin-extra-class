@@ -12,6 +12,7 @@ interface Student {
   name: string;
   gender: string;
   email: string;
+  class: string;
 }
 
 interface Course {
@@ -21,6 +22,12 @@ interface Course {
   price: number;
   rate: string;
   description: string;
+}
+
+interface Classroom {
+  id: string;
+  name: string;
+  teacher: string;
 }
 
 const teacher: Teacher[] = [
@@ -63,18 +70,21 @@ const student: Student[] = [
     name: "Lim Tangmeng",
     gender: "M",
     email: "Tangmeng.Lim@gmail.com",
+    class: "",
   },
   {
     id: "2",
     name: "Hannah Gordon",
     gender: "F",
     email: "hannah.gordon@example.com",
+    class: "1",
   },
   {
     id: "3",
     name: "Annette Richardson",
     gender: "F",
     email: "annette.richardson@example.com",
+    class: "",
   },
 ];
 const course: Course[] = [
@@ -96,4 +106,27 @@ const course: Course[] = [
   },
 ];
 
-export { student, teacher, course };
+const classroom: Classroom[] = [
+  {
+    id: "1",
+    name: "M1",
+    teacher: "2",
+  },
+  {
+    id: "22",
+    name: "M2",
+    teacher: "3",
+  },
+  {
+    id: "3",
+    name: "M3",
+    teacher: "2",
+  },
+  {
+    id: "4",
+    name: "M4",
+    teacher: "4",
+  },
+];
+
+export { student, teacher, course, classroom };

@@ -35,7 +35,7 @@
     }
   }
 
-  ul {
+  .studentContainer {
     @include scrollbarHidden;
     margin-top: 1em;
     list-style: none;
@@ -43,8 +43,9 @@
     height: 70vh;
     margin-bottom: 1em;
 
-    li {
+    div {
       margin: 0.2em 0;
+      font-size: 1em;
 
       &:hover {
         background: red;

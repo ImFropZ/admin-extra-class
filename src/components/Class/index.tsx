@@ -1,27 +1,39 @@
 import classes from "./class.module.css";
+import { Item } from "../";
+import { useDroppable } from "@dnd-kit/core";
+import { teacher } from "../../DummyData";
 
-function Class() {
+interface Props {
+  class: { id: string; name: string; teacher: string };
+  value: {
+    id: string;
+    name: string;
+    class?: string;
+  }[];
+}
+
+function Class(props: Props) {
+  const students = props.value;
+  const classroom = props.class;
+  const teacherName = teacher.find((tea) => {
+    return tea.id === classroom.teacher;
+  })?.name;
+
+  const { setNodeRef } = useDroppable({
+    id: classroom.id,
+  });
+
   return (
-    <div className={classes.container}>
+    <div className={classes.container} ref={setNodeRef}>
       <div className={classes.studentContainer}>
-        <p>StudentName</p>
-        <p>StudentName</p>
-        <p>StudentName</p>
-        <p>StudentName</p>
-        <p>StudentName</p>
-        <p>StudentName</p>
-        <p>StudentName</p>
-        <p>StudentName</p>
-        <p>StudentName</p>
-        <p>StudentName</p>
-        <p>StudentName</p>
-        <p>StudentName</p>
-        <p>StudentName</p>
-        <p>StudentName</p>
+        {students.map((student) => {
+          if (student.class !== classroom.id) return;
+          return <Item student={student} key={student.id} />;
+        })}
       </div>
       <div className={classes.titleContainer}>
-        <p>ClassName</p>
-        <p>TeacherName</p>
+        <p>{classroom.name}</p>
+        <p>{teacherName}</p>
       </div>
     </div>
   );
