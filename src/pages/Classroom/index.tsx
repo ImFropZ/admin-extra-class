@@ -74,7 +74,6 @@ function Classroom() {
   function onDragEnd(event: DragEndEvent) {
     const { over } = event;
     const overId = over?.id;
-    console.log(overId);
     if (!activeStu) return;
     setStudent((prev) => {
       activeStu.class = overId ? overId.toString() : "";
