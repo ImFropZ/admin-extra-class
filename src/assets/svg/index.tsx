@@ -7,6 +7,7 @@ import UserIcon from "./UserIcon";
 import ProfileIcon from "./ProfileIcon";
 import ArrowIcon from "./ArrowIcon";
 import SpyglassIcon from "./SpyglassIcon";
+import CloseIcon from "./CloseIcon";
 
 export {
   ProfileIcon,
@@ -18,4 +19,5 @@ export {
   CourseIcon,
   ArrowIcon,
   SpyglassIcon,
+  CloseIcon,
 };

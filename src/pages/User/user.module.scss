@@ -1,0 +1,12 @@
+@use "../../abstract" as *;
+
+.wrapper {
+  @include scrollbarHidden; 
+  width: 100%;
+  padding: 0 1.2em 2em 1.2em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5em;
+  font-size: 1.6em;
+}
