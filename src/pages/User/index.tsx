@@ -1,8 +1,8 @@
-import { SectionHeader } from "../../components";
+import { SectionHeader, UserContainer } from "../../components";
 
 function User() {
   return (
-    <>
+    <div>
       <SectionHeader
         title="User Details"
         btnName="+ Create New User"
@@ -10,7 +10,8 @@ function User() {
           console.log("User");
         }}
       />
-    </>
+      <UserContainer />
+    </div>
   );
 }
 

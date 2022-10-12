@@ -11,6 +11,7 @@ import DataTable from "./DataTable";
 import StudentContainer from "./StudentContainer";
 import Class from "./Class";
 import Item from "./Item";
+import UserContainer from "./UserContainer";
 
 export {
   Graph,
@@ -26,4 +27,5 @@ export {
   StudentContainer,
   Class,
   Item,
+  UserContainer,
 };
