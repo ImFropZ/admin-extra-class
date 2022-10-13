@@ -83,7 +83,7 @@ const course: Course[] = [
     name: "Math",
     teacher: "Heidi Gutierrez",
     price: 50,
-    rate: "4.5",
+    rate: "4",
     description: "Learn with ME",
   },
   {
@@ -91,7 +91,7 @@ const course: Course[] = [
     name: "Khmer",
     teacher: "Christian Russell",
     price: 30,
-    rate: "4",
+    rate: "2",
     description: "Learn Khmer with ME",
   },
 ];

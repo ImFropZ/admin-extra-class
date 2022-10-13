@@ -7,6 +7,9 @@ import UserIcon from "./UserIcon";
 import ProfileIcon from "./ProfileIcon";
 import ArrowIcon from "./ArrowIcon";
 import SpyglassIcon from "./SpyglassIcon";
+import StarIcon from "./StarIcon";
+import EditIcon from "./EditIcon";
+import DeleteIcon from "./DeleteIcon";
 
 export {
   ProfileIcon,
@@ -18,4 +21,7 @@ export {
   CourseIcon,
   ArrowIcon,
   SpyglassIcon,
+  StarIcon,
+  EditIcon,
+  DeleteIcon,
 };
