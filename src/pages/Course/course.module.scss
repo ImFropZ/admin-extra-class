@@ -1,0 +1,97 @@
+@use "../../abstract" as *;
+
+.starContainer {
+  width: 100%;
+  padding: 5px;
+
+  svg {
+    width: 18%;
+  }
+}
+
+.actionContainer {
+  width: 100%;
+
+  span:first-child {
+    svg {
+      cursor: pointer;
+      fill: green;
+      margin: 0 5px;
+    }
+  }
+
+  span:last-child {
+    svg {
+      cursor: pointer;
+      fill: red;
+      margin: 0 5px;
+    }
+  }
+}
+
+.modal {
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  padding-top: 1em;
+
+  h1 {
+    font-weight: 400;
+    text-decoration: underline;
+    font-size: 1.6em;
+  }
+
+  .wrapper {
+    .inputContainer {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 0.3em;
+      margin: 1em 0;
+
+      input[type="text"],
+      textarea {
+        @include restartInput;
+        width: 26ch;
+        padding: 0.4em 0.4em;
+        background: themeColor($theme, fg);
+        font-size: 1em;
+      }
+
+      &:last-child {
+        align-items: flex-start;
+
+        textarea {
+          resize: none;
+        }
+
+        button {
+          margin-top: auto;
+        }
+      }
+    }
+  }
+
+  .action {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+
+    button {
+      margin: 0 0.5em;
+    }
+  }
+}
+
+button {
+  @include restartButton;
+  background-color: themeColor($theme, fg, 0.7);
+  padding: 0.2em 0.7em;
+  border-radius: 20px;
+
+  &:hover {
+    background-color: themeColor($theme, fg);
+  }
+}

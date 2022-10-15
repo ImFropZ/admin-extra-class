@@ -10,6 +10,7 @@ import SectionHeader from "./SectionHeader";
 import DataTable from "./DataTable";
 import StudentContainer from "./StudentContainer";
 import Class from "./Class";
+import Modal from "./Modal";
 
 export {
   Graph,
@@ -24,4 +25,5 @@ export {
   DataTable,
   StudentContainer,
   Class,
+  Modal,
 };
