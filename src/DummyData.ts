@@ -1,4 +1,4 @@
-interface Teacher {
+export interface Teacher {
   id: string;
   name: string;
   gender: string;
@@ -7,14 +7,14 @@ interface Teacher {
   description: string;
 }
 
-interface Student {
+export interface Student {
   id: string;
   name: string;
   gender: string;
   email: string;
 }
 
-interface Course {
+export interface Course {
   id: string;
   name: string;
   teacher: string;

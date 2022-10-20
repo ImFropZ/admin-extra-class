@@ -1,0 +1,48 @@
+@use "../abstract" as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  font-size: 2em;
+
+  .search {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    svg {
+      width: 1.5em;
+      height: 1.5em;
+      position: absolute;
+      left: 0.5em;
+    }
+
+    input[type="text"] {
+      @include restartInput;
+      font-size: 1.2em;
+      padding: 0.2em 0.2em 0.2em 1.9em;
+      border-radius: 35px;
+      background: themeColor($theme, fg);
+      box-shadow: 0 0 0.1em 0.1em #0005;
+    }
+  }
+
+  .container {
+    @include scrollbarHidden;
+    margin-top: 1em;
+    max-height: 300px;
+    overflow-y: scroll;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 1em 0.1em #0005;
+
+    div {
+      cursor: pointer;
+      padding: 0.2em 0.6em;
+
+      &:hover {
+        background-color: #0002;
+      }
+    }
+  }
+}
