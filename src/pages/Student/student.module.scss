@@ -28,7 +28,7 @@
   gap: 1em;
   padding-top: 1em;
   width: 500px;
-  height: 500px;
+  height: 300px;
   font-size: 1.6em;
   background-color: #fff;
   box-shadow: 0 0 1em 0.1em #0005;
@@ -42,18 +42,18 @@
   .wrapper {
     .inputContainer {
       display: flex;
-      justify-content: flex-end;
       align-items: center;
+      justify-content: center;
       gap: 0.3em;
       margin: 1em 0;
 
-      :nth-child(2) {
-        flex-direction: column;
+      p {
+        text-align: end;
+        flex-grow: 1;
       }
 
       input[type="text"],
-      .input,
-      textarea {
+      .radioContainer {
         @include restartInput;
         width: 15em;
         height: 2em;
@@ -62,22 +62,15 @@
         font-size: 1em;
       }
 
-      .input {
-        cursor: pointer;
+      .radioContainer {
+        background: none;
+        display: flex;
+        justify-content: space-between;
       }
 
-      &:last-child {
-        align-items: flex-start;
-
-        textarea {
-          font-family: "Inter";
-          resize: none;
-          height: 9em;
-        }
-
-        button {
-          margin-top: auto;
-        }
+      input[type="radio"],
+      label {
+        cursor: pointer;
       }
     }
   }
@@ -93,7 +86,6 @@
   }
 }
 
-.wrapper div,
 .action {
   button {
     @include restartButton;

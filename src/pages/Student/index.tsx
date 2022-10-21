@@ -1,4 +1,4 @@
-import { useState, useReducer } from "react";
+import { useState, useReducer, useMemo } from "react";
 import { DataTable, Modal, SectionHeader } from "../../components";
 import { useAction } from "../../customHook";
 import Dummy from "../../DummyData";
@@ -16,8 +16,6 @@ function Student() {
   const [state, dispatch] = useReducer(reducer, STATE);
   const [DummyStudent, setDummyStudent] = useState(Dummy.student);
 
-  const head: Array<string> = ["ID", "Name", "Gender", "Email", "Action"];
-  const data: Array<Array<any>> = [];
   const action = useAction(classes.actionContainer);
 
   const editAction = (id: string) => {
@@ -43,22 +41,29 @@ function Student() {
         return student;
       });
     });
-    console.log(DummyStudent, Dummy.student);
     dispatch({ type: ACTION.NEW_EDIT_ID });
   };
 
-  DummyStudent.forEach((e) => {
-    data.push([
-      e.id,
-      e.name,
-      e.gender,
-      e.email,
-      action({
-        editAction: () => editAction(e.id),
-        deleteAction: () => deleteAction(e.id),
+  const head: Array<string> = useMemo(
+    () => ["ID", "Name", "Gender", "Email", "Action"],
+    []
+  );
+  const data: Array<Array<any>> = useMemo(
+    () =>
+      DummyStudent.map((student) => {
+        return [
+          student.id,
+          student.name,
+          student.gender,
+          student.email,
+          action({
+            editAction: () => editAction(student.id),
+            deleteAction: () => deleteAction(student.id),
+          }),
+        ];
       }),
-    ]);
-  });
+    [DummyStudent, setDummyStudent]
+  );
 
   return (
     <>
@@ -112,48 +117,50 @@ function Student() {
             </div>
             <div className={classes.inputContainer}>
               <p>Gender : </p>
-              <input
-                type="radio"
-                name="gender"
-                id="M"
-                value="M"
-                defaultChecked={state.gender === "M" ? true : false}
-                onClick={(e) => {
-                  dispatch({
-                    type: ACTION.NEW_GENDER,
-                    payload: e.currentTarget.value,
-                  });
-                }}
-              />
-              <label htmlFor="M">Male</label>
-              <input
-                type="radio"
-                name="gender"
-                id="F"
-                value="F"
-                defaultChecked={state.gender === "F" ? true : false}
-                onClick={(e) => {
-                  dispatch({
-                    type: ACTION.NEW_GENDER,
-                    payload: e.currentTarget.value,
-                  });
-                }}
-              />
-              <label htmlFor="F">Female</label>
-              <input
-                type="radio"
-                name="gender"
-                id="U"
-                value="U"
-                defaultChecked={state.gender === "U" ? true : false}
-                onClick={(e) => {
-                  dispatch({
-                    type: ACTION.NEW_GENDER,
-                    payload: e.currentTarget.value,
-                  });
-                }}
-              />
-              <label htmlFor="U">Unknown</label>
+              <div className={classes.radioContainer}>
+                <input
+                  type="radio"
+                  name="gender"
+                  id="M"
+                  value="M"
+                  defaultChecked={state.gender === "M" ? true : false}
+                  onClick={(e) => {
+                    dispatch({
+                      type: ACTION.NEW_GENDER,
+                      payload: e.currentTarget.value,
+                    });
+                  }}
+                />
+                <label htmlFor="M">Male</label>
+                <input
+                  type="radio"
+                  name="gender"
+                  id="F"
+                  value="F"
+                  defaultChecked={state.gender === "F" ? true : false}
+                  onClick={(e) => {
+                    dispatch({
+                      type: ACTION.NEW_GENDER,
+                      payload: e.currentTarget.value,
+                    });
+                  }}
+                />
+                <label htmlFor="F">Female</label>
+                <input
+                  type="radio"
+                  name="gender"
+                  id="U"
+                  value="U"
+                  defaultChecked={state.gender === "U" ? true : false}
+                  onClick={(e) => {
+                    dispatch({
+                      type: ACTION.NEW_GENDER,
+                      payload: e.currentTarget.value,
+                    });
+                  }}
+                />
+                <label htmlFor="U">Unknown</label>
+              </div>
             </div>
             <div className={classes.inputContainer}>
               <p>Email : </p>

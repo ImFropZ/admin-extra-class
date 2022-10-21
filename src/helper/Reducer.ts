@@ -13,6 +13,7 @@ export const ACTION = {
   NEW_EDIT_ID: "newEditId",
   NEW_SEARCH_VALUE: "newSearchValue",
   NEW_DESCRIPTION: "newDescription",
+  NEW_TELEPHONE: "newTelephone",
 
   /** Toggle */
   TG_SEARCH: "tgSearch",
@@ -38,6 +39,8 @@ const reducer = (state: any, action: Action) => {
       return { ...state, price: action.payload || 0 };
     case ACTION.NEW_DESCRIPTION:
       return { ...state, description: action.payload?.toString() || "" };
+    case ACTION.NEW_TELEPHONE:
+      return { ...state, telephone: action.payload?.toString() || "" };
     default:
       throw new Error();
   }

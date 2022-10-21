@@ -79,10 +79,6 @@
           resize: none;
           height: 9em;
         }
-
-        button {
-          margin-top: auto;
-        }
       }
     }
   }
@@ -98,7 +94,6 @@
   }
 }
 
-.wrapper div,
 .action {
   button {
     @include restartButton;

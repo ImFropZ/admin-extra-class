@@ -2,7 +2,7 @@ import { DataTable, SectionHeader, Modal } from "../../components";
 import Dummy from "../../DummyData";
 import { useAction, useStar, useSearch } from "../../customHook";
 import classes from "./course.module.css";
-import { useState, useReducer } from "react";
+import { useState, useReducer, useMemo } from "react";
 import reducer, { ACTION } from "../../helper/Reducer";
 
 const STATE = {
@@ -17,18 +17,7 @@ const STATE = {
 
 function Course() {
   const [state, dispatch] = useReducer(reducer, STATE);
-  const [courseData, setCourseData] = useState(Dummy.course);
-
-  const head: Array<string> = [
-    "ID",
-    "Name",
-    "Teacher",
-    "Price($)",
-    "Description",
-    "Rate",
-    "Action",
-  ];
-  const data: Array<Array<any>> = [];
+  const [DummyCourse, setDummyCourse] = useState(Dummy.course);
 
   const star = useStar({
     totalStar: 5,
@@ -48,7 +37,7 @@ function Course() {
   });
 
   const editAction = (key: string) => {
-    const data = courseData.find((c) => c.id === key);
+    const data = DummyCourse.find((c) => c.id === key);
     dispatch({ type: ACTION.NEW_NAME, payload: data?.name });
     dispatch({ type: ACTION.NEW_TEACHER, payload: data?.teacher });
     dispatch({ type: ACTION.NEW_PRICE, payload: data?.price });
@@ -57,13 +46,13 @@ function Course() {
   };
 
   const deleteAction = (key: string) => {
-    setCourseData((prev) => {
+    setDummyCourse((prev) => {
       return prev.filter((el) => el.id !== key);
     });
   };
 
   const onDoneHandler = () => {
-    setCourseData((prev) => {
+    setDummyCourse((prev) => {
       return prev.map((course) => {
         if (course.id === state.editId) {
           course.name = state.name || "";
@@ -77,20 +66,35 @@ function Course() {
     dispatch({ type: ACTION.NEW_EDIT_ID });
   };
 
-  courseData.forEach((e) => {
-    data.push([
-      e.id,
-      e.name,
-      e.teacher,
-      e.price.toString(),
-      e.description,
-      star(parseInt(e.rate)),
-      action({
-        editAction: () => editAction(e.id),
-        deleteAction: () => deleteAction(e.id),
-      }),
-    ]);
-  });
+  const head: Array<string> = useMemo(
+    () => [
+      "ID",
+      "Name",
+      "Teacher",
+      "Price($)",
+      "Description",
+      "Rate",
+      "Action",
+    ],
+    []
+  );
+
+  const data: Array<Array<any>> = useMemo(() => {
+    return DummyCourse.map((course) => {
+      return [
+        course.id,
+        course.name,
+        course.teacher,
+        course.price.toString(),
+        course.description,
+        star(parseInt(course.rate)),
+        action({
+          editAction: () => editAction(course.id),
+          deleteAction: () => deleteAction(course.id),
+        }),
+      ];
+    });
+  }, [DummyCourse, setDummyCourse]);
 
   return (
     <>
