@@ -2,17 +2,21 @@ import { DataTable, SectionHeader, Modal } from "../../components";
 import Dummy from "../../DummyData";
 import { useAction, useStar, useSearch } from "../../customHook";
 import classes from "./course.module.css";
-import { useState } from "react";
+import { useState, useReducer } from "react";
+import reducer, { ACTION } from "../../helper/Reducer";
+
+const STATE = {
+  name: "",
+  teacher: "",
+  price: "",
+  description: "",
+  editId: "",
+  searchValue: "",
+  isSearch: false,
+};
 
 function Course() {
-  const [courseName, setCourseName] = useState<string>("");
-  const [teacherName, setTeacherName] = useState<string>("");
-  const [price, setPrice] = useState<string>("0");
-  const [description, setDescription] = useState<string>("");
-
-  const [isSearch, setIsSearch] = useState<boolean>(false);
-  const [editId, setEditId] = useState<string>("");
-  const [searchValue, setSearchValue] = useState("");
+  const [state, dispatch] = useReducer(reducer, STATE);
   const [courseData, setCourseData] = useState(Dummy.course);
 
   const head: Array<string> = [
@@ -34,23 +38,22 @@ function Course() {
   const search = useSearch({
     list: Dummy.teacher,
     onChange: (e) => {
-      setSearchValue(e.target.value);
+      dispatch({ type: ACTION.NEW_SEARCH_VALUE, payload: e.target.value });
     },
     onSelected: (data) => {
-      setSearchValue("");
-      setTeacherName(data.name);
-      setIsSearch(false);
+      dispatch({ type: ACTION.NEW_TEACHER, payload: data.name });
+      dispatch({ type: ACTION.NEW_SEARCH_VALUE });
+      dispatch({ type: ACTION.TG_SEARCH });
     },
   });
 
   const editAction = (key: string) => {
     const data = courseData.find((c) => c.id === key);
-
-    setCourseName(data?.name || "");
-    setTeacherName(data?.teacher || "");
-    setPrice(data?.price.toString() || "0");
-    setDescription(data?.description || "");
-    setEditId(key);
+    dispatch({ type: ACTION.NEW_NAME, payload: data?.name });
+    dispatch({ type: ACTION.NEW_TEACHER, payload: data?.teacher });
+    dispatch({ type: ACTION.NEW_PRICE, payload: data?.price });
+    dispatch({ type: ACTION.NEW_DESCRIPTION, payload: data?.description });
+    dispatch({ type: ACTION.NEW_EDIT_ID, payload: key });
   };
 
   const deleteAction = (key: string) => {
@@ -61,17 +64,17 @@ function Course() {
 
   const onDoneHandler = () => {
     setCourseData((prev) => {
-      return prev.map((el) => {
-        if (el.id === editId) {
-          el.name = courseName || "";
-          el.teacher = teacherName || "";
-          el.price = parseInt(price || "0");
-          el.description = description || "";
+      return prev.map((course) => {
+        if (course.id === state.editId) {
+          course.name = state.name || "";
+          course.teacher = state.teacher || "";
+          course.price = parseInt(state.price || "0");
+          course.description = state.description || "";
         }
-        return el;
+        return course;
       });
     });
-    setEditId("");
+    dispatch({ type: ACTION.NEW_EDIT_ID });
   };
 
   courseData.forEach((e) => {
@@ -131,25 +134,30 @@ function Course() {
           ],
         }}
       />
-      {editId ? (
+      {state.editId ? (
         <Modal className={classes.modal}>
-          <h1>Edit on ID : {editId}</h1>
+          <h1>Edit on ID : {state.editId}</h1>
           <div className={classes.wrapper}>
             <div className={classes.inputContainer}>
               <p>Name : </p>
               <input
                 type="text"
                 name="name"
-                value={courseName}
+                value={state.name}
                 onChange={(e) => {
-                  setCourseName(e.target.value);
+                  dispatch({ type: ACTION.NEW_NAME, payload: e.target.value });
                 }}
               />
             </div>
             <div className={classes.inputContainer}>
               <p>Teacher : </p>
-              <div className={classes.input} onClick={() => setIsSearch(true)}>
-                {teacherName}
+              <div
+                className={classes.input}
+                onClick={() => {
+                  dispatch({ type: ACTION.TG_SEARCH });
+                }}
+              >
+                {state.teacher}
               </div>
             </div>
             <div className={classes.inputContainer}>
@@ -157,9 +165,9 @@ function Course() {
               <input
                 type="text"
                 name="price"
-                value={price}
+                value={state.price}
                 onChange={(e) => {
-                  setPrice(e.target.value);
+                  dispatch({ type: ACTION.NEW_PRICE, payload: e.target.value });
                 }}
               />
             </div>
@@ -170,9 +178,12 @@ function Course() {
                 cols={25}
                 maxLength={125}
                 name="description"
-                value={description}
+                value={state.description}
                 onChange={(e) => {
-                  setDescription(e.target.value);
+                  dispatch({
+                    type: ACTION.NEW_DESCRIPTION,
+                    payload: e.target.value,
+                  });
                 }}
               />
             </div>
@@ -180,7 +191,9 @@ function Course() {
           <div className={classes.action}>
             <button
               onClick={() => {
-                setEditId("");
+                dispatch({
+                  type: ACTION.NEW_EDIT_ID,
+                });
               }}
             >
               Cancel
@@ -189,7 +202,7 @@ function Course() {
           </div>
         </Modal>
       ) : null}
-      {isSearch ? search(searchValue) : null}
+      {state.isSearch ? search(state.searchValue) : null}
     </>
   );
 }
