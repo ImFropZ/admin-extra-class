@@ -1,6 +1,6 @@
 // import classes from "./teacher.module.css";
 import { DataTable, SectionHeader } from "../../components";
-import { teacher } from "../../DummyData";
+import Dummy from "../../DummyData";
 
 function Teacher() {
   const head: string[] = [
@@ -14,7 +14,7 @@ function Teacher() {
   ];
   const data: string[][] = [];
 
-  teacher.forEach((e) => {
+  Dummy.teacher.forEach((e) => {
     data.push([
       e.id,
       e.name,

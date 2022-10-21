@@ -1,29 +1,19 @@
 import { DataTable, SectionHeader, Modal } from "../../components";
-import { course, teacher, Teacher } from "../../DummyData";
+import Dummy from "../../DummyData";
 import { useAction, useStar, useSearch } from "../../customHook";
 import classes from "./course.module.css";
 import { useState } from "react";
 
-interface EditData {
-  id: string;
-  name: string;
-  teacher: string;
-  price: number;
-  rate: string;
-  description: string;
-}
-
 function Course() {
   const [courseName, setCourseName] = useState<string>("");
-  const [price, setPrice] = useState<string>("");
+  const [teacherName, setTeacherName] = useState<string>("");
+  const [price, setPrice] = useState<string>("0");
   const [description, setDescription] = useState<string>("");
 
   const [isSearch, setIsSearch] = useState<boolean>(false);
   const [editId, setEditId] = useState<string>("");
-  const [editData, setEditData] = useState<EditData>();
-  const [selectedTeacher, setSelectedTeacher] = useState<Teacher>();
-  const [value, setValue] = useState("");
-  const [courseData, setCourseData] = useState(course);
+  const [searchValue, setSearchValue] = useState("");
+  const [courseData, setCourseData] = useState(Dummy.course);
 
   const head: Array<string> = [
     "ID",
@@ -42,23 +32,24 @@ function Course() {
   });
   const action = useAction(classes.actionContainer);
   const search = useSearch({
-    list: teacher,
+    list: Dummy.teacher,
     onChange: (e) => {
-      setValue(e.target.value);
+      setSearchValue(e.target.value);
     },
-    onSelected: (key) => {
-      setValue("");
+    onSelected: (data) => {
+      setSearchValue("");
+      setTeacherName(data.name);
       setIsSearch(false);
-      setSelectedTeacher(teacher.find((tea) => tea.id === key));
     },
   });
 
   const editAction = (key: string) => {
-    let data = courseData.find((c) => c.id === key);
+    const data = courseData.find((c) => c.id === key);
+
     setCourseName(data?.name || "");
+    setTeacherName(data?.teacher || "");
     setPrice(data?.price.toString() || "0");
     setDescription(data?.description || "");
-    setEditData(data);
     setEditId(key);
   };
 
@@ -69,26 +60,18 @@ function Course() {
   };
 
   const onDoneHandler = () => {
-    const data = {
-      name: courseName,
-      teacher: selectedTeacher?.name || editData?.teacher,
-      price,
-      description,
-    };
-    setEditId("");
-    setEditData(undefined);
-    setSelectedTeacher(undefined);
     setCourseData((prev) => {
       return prev.map((el) => {
         if (el.id === editId) {
-          el.name = data.name || "";
-          el.teacher = data.teacher || "";
-          el.price = parseInt(data.price || "0");
-          el.description = data.description || "";
+          el.name = courseName || "";
+          el.teacher = teacherName || "";
+          el.price = parseInt(price || "0");
+          el.description = description || "";
         }
         return el;
       });
     });
+    setEditId("");
   };
 
   courseData.forEach((e) => {
@@ -105,8 +88,6 @@ function Course() {
       }),
     ]);
   });
-
-  console.log(courseData);
 
   return (
     <>
@@ -152,7 +133,7 @@ function Course() {
       />
       {editId ? (
         <Modal className={classes.modal}>
-          <h1>Edit on {editData?.name}</h1>
+          <h1>Edit on ID : {editId}</h1>
           <div className={classes.wrapper}>
             <div className={classes.inputContainer}>
               <p>Name : </p>
@@ -168,7 +149,7 @@ function Course() {
             <div className={classes.inputContainer}>
               <p>Teacher : </p>
               <div className={classes.input} onClick={() => setIsSearch(true)}>
-                {selectedTeacher?.name || editData?.teacher}
+                {teacherName}
               </div>
             </div>
             <div className={classes.inputContainer}>
@@ -200,8 +181,6 @@ function Course() {
             <button
               onClick={() => {
                 setEditId("");
-                setEditData(undefined);
-                setSelectedTeacher(undefined);
               }}
             >
               Cancel
@@ -210,7 +189,7 @@ function Course() {
           </div>
         </Modal>
       ) : null}
-      {isSearch ? search(value) : null}
+      {isSearch ? search(searchValue) : null}
     </>
   );
 }

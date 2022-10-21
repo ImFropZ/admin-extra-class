@@ -6,7 +6,7 @@ import classes from "./hook.module.css";
 interface useSearchProps {
   list: Array<any>;
   onChange: ChangeEventHandler<HTMLInputElement>;
-  onSelected: (key: string | number) => void;
+  onSelected: (data: any) => void;
   className?: string;
 }
 
@@ -28,7 +28,7 @@ function useSearch({ list, onChange, onSelected, className }: useSearchProps) {
             {list.map((el) => {
               if (el.name.toLowerCase().includes(value?.toLowerCase() || ""))
                 return (
-                  <div key={el.id} onClick={() => onSelected(el.id)}>
+                  <div key={el.id} onClick={() => onSelected(el)}>
                     {el.id}. {el.name}
                   </div>
                 );
