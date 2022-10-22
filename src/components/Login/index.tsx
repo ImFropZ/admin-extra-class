@@ -20,7 +20,10 @@ function Login() {
     if (!username.match(regEx.username) || !password.match(regEx.password))
       return;
 
-    if (username === "HelloWorld" && password === "HelloWorld@1") {
+    if (
+      username === process.env.REACT_APP_USERNAME &&
+      password === process.env.REACT_APP_PASSWORD
+    ) {
       localStorage.setItem("auth", "1");
       nav("/");
     }
