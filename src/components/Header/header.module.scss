@@ -32,7 +32,9 @@
   .student,
   .class,
   .user {
-    cursor: pointer;
+    a {
+      cursor: pointer;
+    }
   }
 
   .user {

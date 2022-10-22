@@ -12,6 +12,7 @@ import StudentContainer from "./StudentContainer";
 import Class from "./Class";
 import Item from "./Item";
 import UserContainer from "./UserContainer";
+import Modal from "./Modal";
 
 export {
   Graph,
@@ -28,4 +29,5 @@ export {
   Class,
   Item,
   UserContainer,
+  Modal,
 };

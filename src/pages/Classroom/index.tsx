@@ -1,6 +1,6 @@
 import { StudentContainer, Class, Item } from "../../components";
 import classes from "./classroom.module.css";
-import { student, classroom } from "../../DummyData";
+import Dummy from "../../DummyData";
 import { useState } from "react";
 import {
   DndContext,
@@ -12,14 +12,14 @@ import {
   DragEndEvent,
 } from "@dnd-kit/core";
 
-const data = student.map((stu) => {
-  return { id: stu.id, name: stu.name, class: stu.class };
+const data = Dummy.student.map((student) => {
+  return { id: student.id, name: student.name, class: student.class };
 });
 
 function Classroom() {
   const [student, setStudent] = useState({
     student: data,
-    class: classroom,
+    class: Dummy.classroom,
   });
 
   const [activeStu, setActiveStu] = useState<{
@@ -41,7 +41,12 @@ function Classroom() {
         <div className={classes.classContainer}>
           {student.class.map((_class) => {
             return (
-              <Class class={_class} value={student.student} key={_class.id} />
+              <Class
+                class={_class}
+                value={student.student}
+                key={_class.id}
+                onEdit={() => {}}
+              />
             );
           })}
         </div>
@@ -57,7 +62,7 @@ function Classroom() {
   function onDragStart(event: DragStartEvent) {
     const { active } = event;
     const indexOfStudent = student.student.findIndex(
-      (stu) => stu.id === active.id
+      (student) => student.id === active.id
     );
 
     const activeStudent = student.student[indexOfStudent] || undefined;

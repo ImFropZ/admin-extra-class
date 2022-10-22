@@ -11,6 +11,18 @@
   padding: 0.8em 0;
   position: relative;
 
+  svg {
+    fill: #006400;
+    position: absolute;
+    right: 1em;
+    cursor: pointer;
+    transition: all 300ms ease;
+
+    &:hover {
+      fill: #0a0;
+    }
+  }
+
   .studentContainer {
     @include scrollbarHidden;
     height: 270px;
@@ -35,5 +47,70 @@
     padding: 0.5em 2em;
     border-radius: 15px;
     margin-top: auto;
+  }
+}
+
+.modal {
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  padding-top: 1em;
+  width: 500px;
+  height: 500px;
+  font-size: 1.6em;
+  background-color: #fff;
+  box-shadow: 0 0 1em 0.1em #0005;
+
+  h1 {
+    font-weight: 400;
+    text-decoration: underline;
+    font-size: 1.6em;
+  }
+
+  .wrapper {
+    .inputContainer {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 0.3em;
+      margin: 1em 0;
+
+      input[type="text"],
+      .input,
+      textarea {
+        @include restartInput;
+        width: 15em;
+        height: 2em;
+        padding: 0.4em 0.4em;
+        background: themeColor($theme, fg);
+        font-size: 1em;
+      }
+
+      .input {
+        cursor: pointer;
+      }
+
+      &:last-child {
+        align-items: flex-start;
+
+        textarea {
+          font-family: "Inter";
+          resize: none;
+          height: 9em;
+        }
+      }
+    }
+  }
+
+  .action {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+
+    button {
+      margin: 0 0.5em;
+    }
   }
 }

@@ -8,7 +8,7 @@ interface Style {
 
 interface Table {
   head: string[];
-  data: string[][];
+  data: string[][] | JSX.Element[][];
   style?: {
     head?: Style[];
     body?: Style[];
