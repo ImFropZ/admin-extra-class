@@ -27,7 +27,7 @@ function Class(props: Props) {
 
   return (
     <div className={classes.container} ref={setNodeRef}>
-      <EditIcon onClick={props.onEdit} />
+      <EditIcon id={classroom.id} onClick={props.onEdit} />
       <div className={classes.studentContainer}>
         {students.map((student) => {
           if (student.class !== classroom.id) return;

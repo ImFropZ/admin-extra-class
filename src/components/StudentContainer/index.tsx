@@ -35,7 +35,9 @@ function StudentContainer(props: Props) {
         </div>
         <div className={classes.studentContainer}>
           {students.map((student) => {
-            if (student.name.includes(searchValue)) {
+            if (
+              student.name.toLowerCase().includes(searchValue.toLowerCase())
+            ) {
               return student.class === "" ? (
                 <Item student={student} key={student.id} />
               ) : null;

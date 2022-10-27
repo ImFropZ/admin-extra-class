@@ -10,6 +10,7 @@ import SpyglassIcon from "./SpyglassIcon";
 import StarIcon from "./StarIcon";
 import EditIcon from "./EditIcon";
 import DeleteIcon from "./DeleteIcon";
+import CircleCrossIcon from "./CircleCrossIcon";
 
 export {
   ProfileIcon,
@@ -24,4 +25,5 @@ export {
   StarIcon,
   EditIcon,
   DeleteIcon,
+  CircleCrossIcon,
 };

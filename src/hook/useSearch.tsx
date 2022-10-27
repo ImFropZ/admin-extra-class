@@ -22,6 +22,7 @@ function useSearch({ list, onChange, onSelected, className }: useSearchProps) {
               placeholder="Search"
               value={value || ""}
               onChange={onChange}
+              autoFocus
             />
           </div>
           <div className={classes.container}>

@@ -13,8 +13,10 @@ import Class from "./Class";
 import Item from "./Item";
 import UserContainer from "./UserContainer";
 import Modal from "./Modal";
+import AddedStudent from "./AddedStudent";
 
 export {
+  AddedStudent,
   Graph,
   Event,
   Information,

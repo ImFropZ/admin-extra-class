@@ -46,9 +46,10 @@
     div {
       margin: 0.2em 0;
       font-size: 1em;
+      padding: 0 .5em;
 
       &:hover {
-        background: red;
+        background-color: #0001;
         cursor: grab;
       }
     }

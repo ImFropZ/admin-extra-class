@@ -14,6 +14,7 @@ export const ACTION = {
   NEW_SEARCH_VALUE: "newSearchValue",
   NEW_DESCRIPTION: "newDescription",
   NEW_TELEPHONE: "newTelephone",
+  NEW_SEARCH: "newSearch",
 
   /** Toggle */
   TG_SEARCH: "tgSearch",
@@ -41,6 +42,8 @@ const reducer = (state: any, action: Action) => {
       return { ...state, description: action.payload?.toString() || "" };
     case ACTION.NEW_TELEPHONE:
       return { ...state, telephone: action.payload?.toString() || "" };
+    case ACTION.NEW_SEARCH:
+      return { ...state, isSearch: action.payload?.toString() || "" };
     default:
       throw new Error();
   }

@@ -12,12 +12,12 @@ function Modal(props: ModalProps) {
       <div
         style={{
           position: "fixed",
-          zIndex: "100 !important",
           top: 0,
           left: 0,
           right: 0,
           bottom: 0,
           backgroundColor: "#fff8",
+          zIndex: "99",
         }}
       />
       <div
@@ -27,6 +27,7 @@ function Modal(props: ModalProps) {
           top: "50%",
           left: "50%",
           translate: "-50% -50%",
+          zIndex: "100",
         }}
       >
         {children}
