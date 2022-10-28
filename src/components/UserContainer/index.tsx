@@ -3,10 +3,16 @@ import classes from "./userContainer.module.css";
 import { UnknownIcon } from "../../assets/";
 import { CloseIcon } from "../../assets/svg";
 
-function UserContainer() {
+interface UserContainerProps {
+  onDelete?: () => void;
+}
+
+function UserContainer(props: UserContainerProps) {
   return (
     <div className={classes.container}>
-      <CloseIcon />
+      <span onClick={props.onDelete}>
+        <CloseIcon />
+      </span>
       <div className={classes.image}>
         <img src={UnknownIcon} alt="Unknown Profile" />
       </div>

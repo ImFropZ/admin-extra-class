@@ -12,7 +12,7 @@ function User() {
         }}
       />
       <div className={classes.wrapper}>
-        {Array.from(Array(10), (v, k) => {
+        {Array.from(Array(11), (v, k) => {
           return <UserContainer key={k} />;
         })}
       </div>
