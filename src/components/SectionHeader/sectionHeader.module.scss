@@ -23,7 +23,7 @@
     input[type="text"] {
       @include restartInput;
       font-size: 1.2em;
-      padding: 0.2em 0.2em 0.2em 1.9em;
+      padding: 0.4em 0.2em 0.4em 1.9em;
       border-radius: 35px;
       background: themeColor($theme, fg);
     }

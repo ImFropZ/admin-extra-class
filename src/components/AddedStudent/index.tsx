@@ -1,5 +1,5 @@
 import classes from "./addedStudent.module.css";
-import { CircleCrossIcon } from "../../assets/svg";
+import { CloseIcon } from "../../assets/svg";
 import Dummy from "../../DummyData";
 
 interface AddedStudentProps {
@@ -24,7 +24,7 @@ function AddedStudent(props: AddedStudentProps) {
                 className={classes.cross}
                 onClick={() => onRemove(student.id)}
               >
-                <CircleCrossIcon />
+                <CloseIcon />
               </span>
             </span>
           );
